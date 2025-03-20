@@ -1,0 +1,20 @@
+.tweets-category {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 30%;
+    background-color: #D9D9D9;
+}
+
+.tweet-list {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.tweet {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.stats-button {
+    margin-top: 20px;
+}

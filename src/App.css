@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+}
+
+.logo {
+  width: 12%;
+}
+
+.analyze-button {
+  margin-left: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #65558F;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.analyze-button:hover {
+  background-color: #65558F;
+}
+
+.App-footer {
+  background-color: #65558F;
+  color: white;
+  padding: 8px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.App-main {
+  margin-top: 13%;
+}
