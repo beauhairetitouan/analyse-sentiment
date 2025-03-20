@@ -39,3 +39,16 @@ app.get('/api/tweets/:query', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch tweets' });
     }
 });
+
+
+app.get('/api/twitter/user/:username', async (req, res) => {
+    const username = req.params.username;
+    try {
+        const user = await readOnlyClient.v2.userByUsername(username);  // Rechercher un utilisateur par son handle
+        res.json(user);  // Retourner les informations sur l'utilisateur
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        res.status(500).json({ error: 'Failed to fetch user data' });
+    }
+});
+
