@@ -30,7 +30,7 @@ app.get('/api/tweets/:query', async (req, res) => {
         const query = req.params.query;
         const tweets = await readOnlyClient.v2.search({
             query: query,
-            max_results: 10,
+            max_results: 5,
         });
 
         res.json(tweets);
@@ -51,4 +51,34 @@ app.get('/api/twitter/user/:username', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch user data' });
     }
 });
+
+app.get('/api/twitter/users/:id/tweets', async (req, res) => {
+    const userId = req.params.id;
+    const { start_date, end_date } = req.query;
+
+    try {
+        // Vérification et formatage des dates en ISO 8601 (format requis par Twitter API)
+        const startTime = start_date ? new Date(start_date).toISOString() : undefined;
+        const endTime = end_date ? new Date(end_date).toISOString() : undefined;
+
+        const response = await readOnlyClient.v2.userTimeline(userId, {
+            max_results: 10,
+            start_time: startTime,
+            end_time: endTime
+        });
+
+        // Extraction des tweets utiles
+        const tweets = response.data.data.map(tweet => ({
+            id: tweet.id,
+            text: tweet.text,
+            created_at: tweet.created_at
+        }));
+
+        res.json(tweets);
+    } catch (error) {
+        console.error('Error fetching user tweets:', error);
+        res.status(500).json({ error: 'Failed to fetch user tweets' });
+    }
+});
+
 
