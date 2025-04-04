@@ -45,9 +45,9 @@ const TweetsSection = ({ tweets }) => {
 
     return (
         <div className="tweets-section">
-            <TweetCategory title="Positifs" tweets={positiveTweets} />
-            <TweetCategory title="Neutres" tweets={neutralTweets} />
-            <TweetCategory title="Négatifs" tweets={negativeTweets} />
+            <TweetCategory title="Positifs" tweets={positiveTweets} total={tweets.length} />
+            <TweetCategory title="Neutres" tweets={neutralTweets} total={tweets.length} />
+            <TweetCategory title="Négatifs" tweets={negativeTweets} total={tweets.length} />
         </div>
     );
 };

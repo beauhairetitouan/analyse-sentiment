@@ -4,4 +4,20 @@
     padding: 10px;
     margin: 5px 0;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid transparent;
+}
+
+
+.positive {
+    border-left-color: #66cc66;
+
+}
+
+.negative {
+    border-left-color: #ff6666;
+
+}
+
+.neutral {
+    border-left-color: #4cafdd;
 }

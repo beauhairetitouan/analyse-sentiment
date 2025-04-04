@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import DatePicker from './components/DatePicker';
 import TweetsSection from './components/TweetsSection';
+import Total from './components/Total';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -64,6 +65,7 @@ function App() {
       </header>
       <main className="App-main">
         <TweetsSection tweets={tweets} />
+        <Total tweets={tweets} />
       </main>
       <footer className="App-footer">
         <p>© 2025 Titouan BEAUHAIRE</p>

@@ -1,7 +1,7 @@
 .tweets-category {
     border: 1px solid #ccc;
     padding: 20px;
-    width: 30%;
+    width: 100%;
     background-color: #f0eded;
 }
 
@@ -17,4 +17,23 @@
 
 .stats-button {
     margin-top: 20px;
+}
+
+.tweet-category-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+
+.positive-text {
+    color: #66cc66;
+}
+
+.negative-text {
+    color: #ff6666;
+}
+
+.neutral-text {
+    color: #4cafdd;
 }
