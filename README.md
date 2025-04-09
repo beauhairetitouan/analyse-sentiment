@@ -33,19 +33,22 @@ Analyse Sentiment est une application qui permet aux utilisateurs de rechercher 
 ## Technologies utilisées
 
 ### Frontend
-- React.js
-- CSS
-- Chart.js
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ### Backend
-- Node.js
-- Express.js
-- Twitter API v2
-- Hugging Face API
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![Twitter API](https://img.shields.io/badge/Twitter%20API-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFBD13?style=for-the-badge&logo=huggingface&logoColor=black)
 
 ### Outils & bibliothèques
-- dotenv pour la gestion des variables d'environnement
-- cors pour la gestion des requêtes cross-origin
+![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black)
+![CORS](https://img.shields.io/badge/CORS-000000?style=for-the-badge&logo=cors&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
 ## Architecture
 
@@ -125,6 +128,13 @@ npm start
 
 ### Exemple
 
+1. 
+![Utilisateur](./public/user.png)
+
+2. 
+![Dates](./public/date.png)
+
+3. 
 
 
 ## API Reference
