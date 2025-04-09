@@ -4,13 +4,18 @@ import SearchBar from './components/SearchBar';
 import DatePicker from './components/DatePicker';
 import TweetsSection from './components/TweetsSection';
 import Total from './components/Total';
+import PieChart from './components/PieChart';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [tweets, setTweets] = useState([]);
-
+  const [sentimentCounts, setSentimentCounts] = useState({
+    positive: 0,
+    neutral: 0,
+    negative: 0,
+  });
 
   const handleDateChange = (e, isStartDate) => {
     if (isStartDate) {
@@ -20,29 +25,28 @@ function App() {
     }
   };
 
-
   const handleAnalyzeClick = async () => {
     if (!searchQuery.trim()) return;
 
     try {
       const response = await fetch(`http://localhost:5001/api/twitter/user/${searchQuery}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
+      if (!response.ok) throw new Error('Failed to fetch user data');
       const data = await response.json();
       const userId = data.data.id;
 
       const tweetsResponse = await fetch(
         `http://localhost:5001/api/twitter/users/${userId}/tweets?start_date=${startDate}&end_date=${endDate}`
       );
-      if (!tweetsResponse.ok) {
-        throw new Error('Failed to fetch user tweets');
-      }
+      if (!tweetsResponse.ok) throw new Error('Failed to fetch user tweets');
       const tweetsData = await tweetsResponse.json();
       setTweets(tweetsData || []);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+  };
+
+  const handleSentimentCounts = (counts) => {
+    setSentimentCounts(counts);
   };
 
   return (
@@ -64,8 +68,15 @@ function App() {
         </div>
       </header>
       <main className="App-main">
-        <TweetsSection tweets={tweets} />
+        <TweetsSection tweets={tweets} onClassified={handleSentimentCounts} />
         <Total tweets={tweets} />
+        {tweets.length > 0 && (
+          <PieChart
+            positive={sentimentCounts.positive}
+            neutral={sentimentCounts.neutral}
+            negative={sentimentCounts.negative}
+          />
+        )}
       </main>
       <footer className="App-footer">
         <p>© 2025 Titouan BEAUHAIRE</p>

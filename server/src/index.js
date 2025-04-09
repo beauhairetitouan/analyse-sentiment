@@ -104,7 +104,6 @@ app.post('/api/sentiment', async (req, res) => {
 
         const result = await response.json();
 
-        // Le modèle `nlptown/bert-base-multilingual-uncased-sentiment` renvoie des labels de 0 à 4
         const sentimentScore = result[0]?.[0]?.label;
 
         let sentiment;
