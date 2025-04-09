@@ -1,70 +1,199 @@
-# Getting Started with Create React App
+# Analyse Sentiment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Une application web permettant d'analyser le sentiment (positif, négatif, neutre) des tweets d'un utilisateur Twitter sur une période définie.
 
-## Available Scripts
+![Logo](./public/logo_tweet.png)
 
-In the project directory, you can run:
+## Table des matières
 
-### `npm start`
+- [Aperçu](#aperçu)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Utilisation](#utilisation)
+- [API Reference](#api-reference)
+- [Développement](#développement)
+- [Licence](#licence)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Aperçu
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Analyse Sentiment est une application qui permet aux utilisateurs de rechercher un compte Twitter et d'analyser le sentiment des tweets publiés par ce compte sur une période spécifique. Les résultats sont présentés sous forme de liste de tweets avec leur classification de sentiment (positif, neutre, négatif) et un graphique circulaire visualisant la répartition des sentiments.
 
-### `npm test`
+## Fonctionnalités
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Recherche d'utilisateurs Twitter par nom d'utilisateur
+- Filtrage des tweets par période (dates de début et de fin)
+- Analyse de sentiment automatique pour chaque tweet
+- Visualisation des résultats via un graphique circulaire
+- Calcul et affichage du nombre total de tweets analysés
+- Affichage détaillé des tweets avec leur classification de sentiment
 
-### `npm run build`
+## Technologies utilisées
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
+- React.js
+- CSS
+- Chart.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
+- Node.js
+- Express.js
+- Twitter API v2
+- Hugging Face API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Outils & bibliothèques
+- dotenv pour la gestion des variables d'environnement
+- cors pour la gestion des requêtes cross-origin
 
-### `npm run eject`
+## Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+L'application est structurée en deux parties principales:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend (API)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Le serveur Express.js expose plusieurs endpoints:
+- Récupération des données utilisateur Twitter
+- Récupération des tweets d'un utilisateur
+- Analyse du sentiment d'un texte via Hugging Face
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
 
-## Learn More
+L'interface utilisateur React comprend plusieurs composants:
+- `App.js`: Composant principal qui gère l'état de l'application
+- `SearchBar`: Pour la recherche d'utilisateurs Twitter
+- `DatePicker`: Pour sélectionner la période d'analyse
+- `TweetsSection`: Affichage et analyse des tweets
+- `Total`: Affichage du nombre total de tweets analysés
+- `PieChart`: Visualisation de la distribution des sentiments
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clonez ce dépôt:
+```bash
+git clone https://github.com/beauhairetitouan/analyse-sentiment.git
+cd analyse-sentiment
+```
 
-### Code Splitting
+2. Installez les dépendances pour le backend dans un terminal:
+```bash
+cd server
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Installez les dépendances pour le frontend dans un autre terminal:
+```bash
+cd analyse-sentiment
+npm install
+```
 
-### Analyzing the Bundle Size
+## Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Variables d'environnement
 
-### Making a Progressive Web App
+Créez un fichier `config/.env` dans le dossier du serveur avec les variables suivantes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+PORT=5001
+TWITTER_BEARER_TOKEN=votre_token_twitter
+HUGGINGFACE_API_KEY=votre_clé_api_huggingface
+```
 
-### Advanced Configuration
+### Clés API requises
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Twitter API v2**: Obtenez un Bearer Token depuis le [Portail Développeur Twitter](https://developer.twitter.com/en/portal/dashboard)
+- **Hugging Face API**: Inscrivez-vous sur [Hugging Face](https://huggingface.co/) pour obtenir une clé API
 
-### Deployment
+## Utilisation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Démarrez le serveur backend:
+```bash
+cd server
+npm start
+```
 
-### `npm run build` fails to minify
+2. Démarrez l'application frontend dans un autre terminal:
+```bash
+cd analyse-sentiment
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Accédez à l'application dans votre navigateur à l'adresse `http://localhost:3000`
+
+4. Entrez un nom d'utilisateur Twitter, sélectionnez les dates de début et de fin, puis cliquez sur "Analyser"
+
+### Exemple
+
+
+
+## API Reference
+
+### Endpoints
+
+#### `GET /api/test`
+- Vérifie si l'API fonctionne correctement
+- Retourne: `{ message: 'API is working!' }`
+
+#### `GET /api/tweets/:query`
+- Recherche des tweets par requête
+- Paramètres:
+  - `query`: La requête de recherche
+- Retourne: Les 5 premiers résultats de tweets
+
+#### `GET /api/twitter/user/:username`
+- Récupère les informations d'un utilisateur Twitter
+- Paramètres:
+  - `username`: Le nom d'utilisateur Twitter (sans @)
+- Retourne: Les détails de l'utilisateur
+
+#### `GET /api/twitter/users/:id/tweets`
+- Récupère les tweets d'un utilisateur sur une période donnée
+- Paramètres:
+  - `id`: L'ID de l'utilisateur Twitter
+  - Query params:
+    - `start_date`: Date de début (format YYYY-MM-DD)
+    - `end_date`: Date de fin (format YYYY-MM-DD)
+- Retourne: Liste des tweets avec ID, texte et date de création
+
+#### `POST /api/sentiment`
+- Analyse le sentiment d'un texte
+- Corps de la requête: `{ text: "Le texte à analyser" }`
+- Retourne: `{ sentiment: "positive"|"neutral"|"negative" }`
+
+## Développement
+
+### Structure des fichiers
+
+```
+analyse-sentiment/
+├── public/
+│   └── logo_tweet.png
+├── src/
+│   ├── components/
+│   │   ├── DatePicker.js
+│   │   ├── Percent.js
+│   │   ├── PieChart.js
+│   │   ├── SearchBar.js
+│   │   ├── Total.js
+│   │   ├── TweetCard.js
+│   │   ├── TweetCategory.js
+│   │   └── TweetsSection.js
+│   ├── App.css
+│   ├── App.js
+│   └── index.js
+├── server/
+│   ├── config/
+│   │   └── .env
+│   ├── src/
+│   │   ├── twitter.js
+│   │   ├── index.js
+│   └── package.json
+├── .gitignore
+├── README.md
+└── package.json
+```
+
+## Licence
+
+© 2025 Titouan BEAUHAIRE
