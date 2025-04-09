@@ -135,6 +135,9 @@ npm start
 ![Dates](./public/date.png)
 
 3. 
+![Analyse](./public/analyse.png)
+
+![Graphique](./public/graphique.png)
 
 
 ## API Reference
